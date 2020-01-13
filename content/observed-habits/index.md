@@ -6,10 +6,10 @@ weight: 81
 
 ## No Code Freeze
 
-Developers living in a Trunk-Based Development reality, mostly do not experience variance in their days or weeks on the 
+Developers living in a Trunk-Based Development reality mostly do not experience variance in their days or weeks on the 
 trunk. In particular, there is no "we're close to a release so let's freeze code", and generally there is no indication 
 of a slowdown in proximity to a release.  Sure, a couple of developers out of a team might be assigned to bug-fixing closer
-to the release but everyone else is going to work at full speed. 
+to the release, but everyone else is going to work at full speed. 
 
 Generally speaking, the trunk is a place to firehose commits into, and the habits of the developers are such that 
 everything is ready to go live. If a team is doing 12 releases a year, then a release branch that is cut on the just in time 
@@ -18,13 +18,13 @@ basis and is the one that is observed to be 'frozen' because of the absence of d
 ### Every Day is the same
 
 Ignoring meetings, developers commit/push at the same rate and to the same place regardless of the day of the week or 
-the week of the month. This is a reinforcement of the "No Code Freeze" rule above. Sure a small subset of the team
+the week of the month. This is a reinforcement of the "No Code Freeze" rule above. Sure, a small subset of the team
 may focus on an imminent release (bug fixes in the trunk, cherry-picked to the release branch), but the majority
 should be focusing on 'business as usual' implementation of functionality for a future release.
 
 ## Quick Reviews
 
-Teams doing Trunk-Based Development know that their commits/pushes will be scrutinized by others, as soon
+Teams doing Trunk-Based Development know that their commits/pushes will be scrutinized by others as soon
 as they have landed on the shared trunk. They are keen on bringing that forward, not delaying it, so they may prefer to 
 pair-program on code changes. Or they may ask colleagues for a code review at the time the change is submitted to be 
 merged into the trunk.
@@ -37,8 +37,8 @@ Trunk-Based Development teams update/pull/sync from the shared trunk often. Many
 
 Developers practicing Trunk-Based Development run the build before a commit/push in order to not break the build. 
 This one practice, for very small teams, allows them to not set up a CI server until later. If they cannot push their 
-commits to the shared trunk because someone else beat them to it then they have to do another update/sync/pull and
-another build and push their revised commit(s). "It worked on my machine" says the developer that does not 
+commits to the shared trunk because someone else beat them, to it then they have to do another update/sync/pull and
+another build and push their revised commit(s). "It worked on my machine," says the developer that does not 
 want to confess to breaking the build (assuming quick reliable idempotent builds).
 
 ## Facilitating commits
@@ -62,7 +62,7 @@ The best implementations are going to perform automatic rollback of a broken com
 developer gets notified and they get to fix it quietly on their workstation.
 
 A developer wanting to update/pull/sync from the shared trunk often runs the risk of encountering that 
-statistically improbable broken build. They do not want to have the commits that broke the trunk, on their workstation
+statistically improbable broken build. They do not want to have the commits that broke the trunk on their workstation
 if they are developing. So what they do is update/pull/sync to the last known good commit, and only go further
 ahead when the trunk build is officially repaired. This way they know they can stay 'green' on their workstation. Some 
 companies engineer a system where the last known good commit hash/number is stored in a network share, and a shell 
@@ -71,7 +71,7 @@ script used for update/pull/sync does so to that instead of HEAD revision.
 ### Build Cop
 
 If the Continuous Integration server is batching commits to trunk in each build, or the elapsed time for a build is 
-long then a "build cop" role might be required within the team to help sort out build breakages. Sadly that 
+long, then a "build cop" role might be required within the team to help sort out build breakages. Sadly that 
 means that locking the trunk to prevent further checkins on top of the broken one might be necessary as some form
 of bisecting is performed to work out which commit broke the build and should be rolled back. Obviously a Continuous
 Integration server setup that can run one build per commit is best.
@@ -86,8 +86,8 @@ they are developing. They can:
 
 Shared nothing requires significant discipline to achieve. It generally means that no TCP-IP leaves the developers 
 box, and being able to prove that by running those operations while disconnected from the network.  The 
-implementing of the wire mocking (service virtualization) of dependent tiers outside the team, is a given. The highest 
-accomplished Trunk-Based Development teams employ mocking of tiers within the same application, in order to make 
+implementing of the wire mocking (service virtualization) of dependent tiers outside the team is a given. The highest 
+accomplished Trunk-Based Development teams employ mocking of tiers within the same application in order to make 
 tests fast and stable. Technologies such as Mountebank{{< ext url="http://www.mbtest.org" >}} make 
 programming working with wire mocking easy. Tiers refer to a layer-cake view of an applications construction, of course.
 
@@ -98,8 +98,8 @@ that (per commit) by a Continuous Integration daemon.
 
 Your team will need many named QA environments, and many named 
 user acceptance testing (UAT) environments. Each of those with different rules about the frequency of deployment, and even perhaps even 
-a temporarily reservation for different reasons. Those environments pull together **real** dependent services 
-and integrated applications. As much as possible those environs should not have shared services. 
+a temporary reservation for different reasons. Those environments pull together **real** dependent services 
+and integrated applications. As much as possible, those environs should not have shared services. 
 
 Companies often make a classic mistake when buying software in that they (say) buy one license for prod, and another 
 for all dev, QA, and UAT, meaning the DevOps team had configured it as shared for all those environments, with a 
@@ -108,7 +108,7 @@ wide-ranging negative impact on productivity and quality for innumerable and som
 ## Common code ownership
 
 Committing to the trunk many times a day requires a broad sense of ownership to code, and a willingness to allow 
-developers to contribute changes to sections of an application or service that they have not previously be involved 
+developers to contribute changes to sections of an application or service that they have not previously been involved 
 with. This privilege does come with responsibilities and checks. The former is to standards, and the checks are by the CI server, 
 and by humans who should honor to do a speedy code review. That last, for the highest performing teams, means as soon
 as the proposed commit is ready.
@@ -117,11 +117,11 @@ as the proposed commit is ready.
 
 Not only do developers practicing Trunk-Based Development not break the build with any commit, they also sign up to
 being able to go live at short notice. For example, one hour, if the CIO visits and says it is going to happen. That
-means there is a bunch of automated tests that come with the build.
+means there are a bunch of automated tests that come with the build.
 
 ## Thin vertical slices
 
-Where possible stories or tasks that have been pulled from the backlog should be achievable by a developer or pair of
+Where possible, stories or tasks that have been pulled from the backlog should be achievable by a developer or pair of
 developers in a short period of time, and in a small number of commits. They should also transcend all the apparent 
 tiers of the stack, and not have to jump between developers with specialized knowledge in order to be able to 
 completed. The Agile industry donates the INVEST{{< ext url="https://en.wikipedia.org/wiki/INVEST_(mnemonic)" >}} principle 
